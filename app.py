@@ -9,13 +9,11 @@ def process_message(message: str):
 
     print(f"\n Question: {message}")
 
-    # STEP 1 — Classify intent
     intent_result = classify_intent(message)
     intent = intent_result["intent"]
 
     print(" Intent:", intent_result)
 
-    # STEP 2 — Generate response
     final_answer = generate_response(intent, message)
 
     print("\n AI Response:\n")
