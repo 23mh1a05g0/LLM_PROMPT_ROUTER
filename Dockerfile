@@ -1,6 +1,13 @@
-
 FROM python:3.11-slim
+
 WORKDIR /app
-COPY . .
+
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-CMD ["python", "app.py"]
+
+COPY . .
+
+EXPOSE 8000
+
+# Run the FastAPI web server by default; use `docker run ... python app.py` for CLI mode
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
